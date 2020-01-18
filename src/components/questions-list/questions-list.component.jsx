@@ -8,8 +8,10 @@ import { QuestionsHeader, QuestionsContainer } from "./questions-list.styles";
 
 import QuestionsListActionTypes from "../../redux/questions-list/questions-list.types";
 import { createStructuredSelector } from "reselect";
-import { selectQuestions } from "../../redux/questions-list/questions-list.selector";
-import { selectIsQuestionsListFetching } from "../../redux/questions-list/questions-list.selector";
+import {
+  selectQuestions,
+  selectIsQuestionsListFetching
+} from "../../redux/questions-list/questions-list.selector";
 
 const QuestionsList = ({ dispatch, questions, isFetching }) => {
   useEffect(() => {
