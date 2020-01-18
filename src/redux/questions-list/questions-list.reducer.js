@@ -1,6 +1,6 @@
 import QuestionsListActionTypes from "./questions-list.types";
 const INITIAL_STATE = {
-  questionsList: null,
+  questions: [],
   isFetching: false,
   errorMessage: undefined
 };
@@ -16,7 +16,7 @@ const questionsListReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isFetching: false,
-        questionsList: action.payload
+        questions: action.payload
       };
     case QuestionsListActionTypes.FETCH_QUESTIONSLIST_FAILURE:
       return {
