@@ -15,7 +15,7 @@ import { selectisNewQuestionAdded } from "../../redux/questions-list/questions-l
 
 if (process.env.NODE_ENV !== "test") ModelContainer.setAppElement("#root");
 
-const NewQuestion = ({ newQuestionAddedSuccess }) => {
+export const NewQuestion = ({ newQuestionAddedSuccess }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const openModal = () => {
