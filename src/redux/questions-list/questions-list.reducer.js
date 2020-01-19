@@ -28,12 +28,17 @@ const questionsListReducer = (state = INITIAL_STATE, action) => {
     case QuestionsListActionTypes.ADD_NEW_QUESTION_SUCCESS:
       return {
         ...state,
-        newQuestionAddedSuccess: "success"
+        newQuestionAddedSuccess: action.payload
       };
     case QuestionsListActionTypes.ADD_NEW_QUESTION_FAILURE:
       return {
         ...state,
-        newQuestionAddedSuccess: "failure"
+        newQuestionAddedSuccess: action.payload
+      };
+    case QuestionsListActionTypes.MESSAGE_HIDE:
+      return {
+        ...state,
+        newQuestionAddedSuccess: action.payload
       };
     default:
       return state;

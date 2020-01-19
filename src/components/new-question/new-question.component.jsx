@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   ModelContainer,
   AddNewButton,
@@ -18,12 +18,6 @@ ModelContainer.setAppElement("#root");
 const NewQuestion = ({ newQuestionAddedSuccess }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  const [visible, setVisible] = useState(true);
-
-  useEffect(() => {
-    setTimeout(() => setVisible(false), 5000);
-  }, []);
-
   const openModal = () => {
     setModalIsOpen(true);
   };
@@ -33,14 +27,10 @@ const NewQuestion = ({ newQuestionAddedSuccess }) => {
 
   return (
     <div>
-      {visible &&
-      newQuestionAddedSuccess &&
-      newQuestionAddedSuccess === "success" ? (
+      {newQuestionAddedSuccess && newQuestionAddedSuccess === "success" ? (
         <SuccessMessage>New question created successfully!</SuccessMessage>
       ) : null}
-      {visible &&
-      newQuestionAddedSuccess &&
-      newQuestionAddedSuccess === "failure" ? (
+      {newQuestionAddedSuccess && newQuestionAddedSuccess === "failure" ? (
         <ErrorMessage>
           Error occurred while creating new question !
         </ErrorMessage>

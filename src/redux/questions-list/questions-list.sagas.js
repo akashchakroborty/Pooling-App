@@ -1,4 +1,4 @@
-import { call, put, takeLatest, all } from "redux-saga/effects";
+import { call, put, takeLatest, all, delay } from "redux-saga/effects";
 import QuestionListActionTypes from "./questions-list.types";
 import axios from "axios";
 
@@ -39,12 +39,24 @@ export function* addNewQuestionAsync({ payload }) {
   try {
     yield call(addnewQuestionApi, payload.questionData);
     yield put({
-      type: QuestionListActionTypes.ADD_NEW_QUESTION_SUCCESS
+      type: QuestionListActionTypes.ADD_NEW_QUESTION_SUCCESS,
+      payload: "success"
     });
     yield call(payload.callback);
+    yield delay(5000);
+    yield put({
+      type: QuestionListActionTypes.MESSAGE_HIDE,
+      payload: false
+    });
   } catch (error) {
     yield put({
-      type: QuestionListActionTypes.ADD_NEW_QUESTION_FAILURE
+      type: QuestionListActionTypes.ADD_NEW_QUESTION_FAILURE,
+      payload: "failure"
+    });
+    yield delay(5000);
+    yield put({
+      type: QuestionListActionTypes.MESSAGE_HIDE,
+      payload: false
     });
   }
 }
