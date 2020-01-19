@@ -2,7 +2,7 @@ import React from "react";
 import { shallow } from "enzyme";
 import VoteSuccess from "./vote-success.component";
 
-describe("CartIcon component", () => {
+describe("VoteSuccess component", () => {
   let mockHistory;
   let wrapper;
 
