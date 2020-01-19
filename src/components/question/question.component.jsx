@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import {
@@ -8,7 +8,7 @@ import {
   QuestionFooter
 } from "./question.styles";
 
-const Question = ({ question, published_at, choices, url }) => {
+export const Question = ({ question, published_at, choices, url, history }) => {
   return (
     <QuestionContainer>
       <QuestionDetails>
@@ -21,9 +21,13 @@ const Question = ({ question, published_at, choices, url }) => {
         </h3>
       </QuestionDetails>
       <QuestionFooter>
-        <Link to={url}>
-          <button>Vote Now</button>
-        </Link>
+        <button
+          onClick={() => {
+            history.push(`${url}`);
+          }}
+        >
+          Vote Now
+        </button>
       </QuestionFooter>
     </QuestionContainer>
   );
@@ -33,7 +37,8 @@ Question.propTypes = {
   question: PropTypes.string.isRequired,
   published_at: PropTypes.string.isRequired,
   choices: PropTypes.array.isRequired,
-  url: PropTypes.string.isRequired
+  url: PropTypes.string.isRequired,
+  history: PropTypes.object.isRequired
 };
 
-export default Question;
+export default withRouter(Question);
