@@ -11,6 +11,14 @@ function poolQuestionListApi() {
   });
 }
 
+function addnewQuestionApi(questionData) {
+  return axios.request({
+    method: "post",
+    url: `${ROOT_URL}/questions?page=1`,
+    data: JSON.stringify(questionData)
+  });
+}
+
 export function* fetchQuestionsListAsync() {
   try {
     let { data } = yield call(poolQuestionListApi);
@@ -25,6 +33,22 @@ export function* fetchQuestionsListAsync() {
     });
   }
 }
+
+export function* addNewQuestionAsync({ payload }) {
+  console.log(payload);
+  try {
+    yield call(addnewQuestionApi, payload.questionData);
+    yield put({
+      type: QuestionListActionTypes.ADD_NEW_QUESTION_SUCCESS
+    });
+    yield call(payload.callback);
+  } catch (error) {
+    yield put({
+      type: QuestionListActionTypes.ADD_NEW_QUESTION_FAILURE
+    });
+  }
+}
+
 export function* fetchQuestionsListStart() {
   yield takeLatest(
     QuestionListActionTypes.FETCH_QUESTIONSLIST_START,
@@ -32,6 +56,13 @@ export function* fetchQuestionsListStart() {
   );
 }
 
+export function* addNewQuestionStart() {
+  yield takeLatest(
+    QuestionListActionTypes.ADD_NEW_QUESTION_START,
+    addNewQuestionAsync
+  );
+}
+
 export function* questionsListSagas() {
-  yield all([call(fetchQuestionsListStart)]);
+  yield all([call(fetchQuestionsListStart), call(addNewQuestionStart)]);
 }

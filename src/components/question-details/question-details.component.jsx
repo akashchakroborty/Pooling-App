@@ -1,5 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 import {
   QuestionDetailsHeader,
@@ -103,6 +104,14 @@ const QuestionDetails = ({
       </QuestionDetailsContainer>
     </div>
   );
+};
+
+QuestionDetails.propTypes = {
+  isFetching: PropTypes.bool.isRequired,
+  match: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
+  selectQuestion: PropTypes.object.isRequired,
+  dispatch: PropTypes.func.isRequired
 };
 
 const mapStateToProps = createStructuredSelector({

@@ -11,3 +11,8 @@ export const selectIsQuestionsListFetching = createSelector(
   [selectquestionsList],
   questionsList => questionsList.isFetching
 );
+
+export const selectisNewQuestionAdded = createSelector(
+  [selectquestionsList],
+  questionsList => questionsList.newQuestionAddedSuccess
+);

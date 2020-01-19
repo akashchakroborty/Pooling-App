@@ -2,7 +2,8 @@ import QuestionsListActionTypes from "./questions-list.types";
 const INITIAL_STATE = {
   questions: [],
   isFetching: false,
-  errorMessage: undefined
+  errorMessage: undefined,
+  newQuestionAddedSuccess: false
 };
 
 const questionsListReducer = (state = INITIAL_STATE, action) => {
@@ -23,6 +24,16 @@ const questionsListReducer = (state = INITIAL_STATE, action) => {
         ...state,
         isFetching: false,
         errorMessage: action.payload
+      };
+    case QuestionsListActionTypes.ADD_NEW_QUESTION_SUCCESS:
+      return {
+        ...state,
+        newQuestionAddedSuccess: "success"
+      };
+    case QuestionsListActionTypes.ADD_NEW_QUESTION_FAILURE:
+      return {
+        ...state,
+        newQuestionAddedSuccess: "failure"
       };
     default:
       return state;

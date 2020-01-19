@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 import Question from "../question/question.component";
+import NewQuestion from "../new-question/new-question.component";
 
 import { QuestionsHeader, QuestionsContainer } from "./questions-list.styles";
 
@@ -25,6 +26,7 @@ const QuestionsList = ({ dispatch, questions, isFetching }) => {
       <QuestionsHeader>
         <h1>Questions</h1>
       </QuestionsHeader>
+      <NewQuestion />
       <QuestionsContainer>
         {isFetching ? (
           <h1>Loading...</h1>
