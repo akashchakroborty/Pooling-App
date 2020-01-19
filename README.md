@@ -14,42 +14,52 @@ If you want to check the application, go to the online demo by clicking [here](h
 
 Steps to get a development env running:
 
-* Make a local copy doing:
+- Make a local copy doing:
 
 ```
 git clone https://github.com/akashchakroborty/Pooling-App.git
 ```
 
-* Run npm install:
+- Run npm install:
 
 ```
 npm install
 ```
 
-* Run start:
+- Run start:
 
 ```
 npm start
 ```
 
-* Then open http://localhost:3000/ to see the app.
+- Then open http://localhost:3000/ to see the app.
 
 The application list's all the Questions on the initial page (Questions List page). On clicking on "Vote Now" in one of them you will be redirected to Question Details Page and can access the description and you can vote one of the choices, just select the right one and then click on "Save Vote".
 Also, in the Questions List page, you can create a New Question by clicking on "Add New Question".
 
 **Important Note**: Please follow the format on the text area description to save all the choices. The Choices must be Coma Separated value.
 
+## Running the tests
+
+To run the automated tests please run
+
+```
+npm test
+```
+
 ## Technologies used
 
-* [React](https://github.com/facebook/create-react-app) - The web Library.
-* [Redux](https://redux.js.org/) - A Predictable State Container for JS Apps.
-* [Redux-Saga](https://github.com/redux-saga/redux-saga) - To manage application side effects.
-* [axios](https://github.com/axios/axios) - As HTTP client.
-* [JavaScript (JS)](https://developer.mozilla.org/en-US/docs/Web/JavaScript) - Programming language.
-* [Styled-Components](https://github.com/styled-components/styled-components) - CSS in JS to style components.
-* [Reselect](https://github.com/reduxjs/reselect) - Selector library for Redux.
-* [Heroku](https://dashboard.heroku.com/) - Cloud application hosting platform.
+- [React](https://github.com/facebook/create-react-app) - The web Library.
+- [Redux](https://redux.js.org/) - A Predictable State Container for JS Apps.
+- [Redux-Saga](https://github.com/redux-saga/redux-saga) - To manage application side effects.
+- [axios](https://github.com/axios/axios) - As HTTP client.
+- [JavaScript (JS)](https://developer.mozilla.org/en-US/docs/Web/JavaScript) - Programming language.
+- [Jest](https://jestjs.io/en/) - Testing Framework.
+- [Enzyme](https://github.com/airbnb/enzyme) - To test React components.
+- [Styled-Components](https://github.com/styled-components/styled-components) - CSS in JS to style components.
+- [Reselect](https://github.com/reduxjs/reselect) - Selector library for Redux.
+- [Heroku](https://dashboard.heroku.com/) - Cloud application hosting platform.
 
 ## Authors
 
-* **Akash Chakroborty** - [akashchakroborty](https://github.com/akashchakroborty)
+- **Akash Chakroborty** - [akashchakroborty](https://github.com/akashchakroborty)

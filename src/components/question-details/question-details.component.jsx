@@ -19,7 +19,7 @@ import {
 
 import { calculatePercent } from "./question-details.utils";
 
-const QuestionDetails = ({
+export const QuestionDetails = ({
   dispatch,
   match,
   history,
@@ -65,7 +65,7 @@ const QuestionDetails = ({
       </QuestionDetailsHeader>
       <QuestionDetailsContainer>
         {isFetching ? (
-          <h1>Loading...</h1>
+          <h1 className="loading">Loading...</h1>
         ) : (
           <Fragment>
             <QuestionTitle>Question: {question}</QuestionTitle>
