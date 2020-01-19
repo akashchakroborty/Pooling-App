@@ -16,12 +16,8 @@ export const VoteSuccessContainer = styled.div`
     color: #ffc627;
     width: 100%;
     margin: 0 auto;
+    margin: 1rem auto;
     border-top: 10px solid #ffc627;
     padding: 20px;
-  }
-
-  a {
-    margin: 5%;
-    display: block;
   }
 `;

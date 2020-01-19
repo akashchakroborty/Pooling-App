@@ -1,14 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { VoteSuccessContainer } from "./vote-success.styles";
 
-const VoteSuccess = () => {
+const VoteSuccess = ({ history }) => {
   return (
     <VoteSuccessContainer>
       <h1>Your vote was successfully placed.</h1>
-      <Link to={`/`}>
-        <button>Go Back</button>
-      </Link>
+      <button
+        onClick={() => {
+          history.push("/");
+        }}
+      >
+        Go Back
+      </button>
     </VoteSuccessContainer>
   );
 };
