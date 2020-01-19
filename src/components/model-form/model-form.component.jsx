@@ -7,7 +7,7 @@ import QuestionsListActionTypes from "../../redux/questions-list/questions-list.
 
 import { FormContainer, InputTextArea, InputText } from "./model-form.styles";
 
-const ModelForm = ({ dispatch, history }) => {
+export const ModelForm = ({ dispatch, history }) => {
   const [question, setQuestion] = useState({
     questionTitle: "",
     choices: ""
