@@ -13,7 +13,7 @@ import ModelForm from "../model-form/model-form.component";
 import { createStructuredSelector } from "reselect";
 import { selectisNewQuestionAdded } from "../../redux/questions-list/questions-list.selector";
 
-ModelContainer.setAppElement("#root");
+if (process.env.NODE_ENV !== "test") ModelContainer.setAppElement("#root");
 
 const NewQuestion = ({ newQuestionAddedSuccess }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);

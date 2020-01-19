@@ -14,7 +14,7 @@ import {
   selectIsQuestionsListFetching
 } from "../../redux/questions-list/questions-list.selector";
 
-const QuestionsList = ({ dispatch, questions, isFetching }) => {
+export const QuestionsList = ({ dispatch, questions, isFetching }) => {
   useEffect(() => {
     dispatch({
       type: QuestionsListActionTypes.FETCH_QUESTIONSLIST_START
@@ -29,7 +29,7 @@ const QuestionsList = ({ dispatch, questions, isFetching }) => {
       <NewQuestion />
       <QuestionsContainer>
         {isFetching ? (
-          <h1>Loading...</h1>
+          <h1 className="loading">Loading...</h1>
         ) : (
           questions.map((question, index) => (
             <Question
