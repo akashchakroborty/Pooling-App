@@ -5,6 +5,7 @@ import { GlobalStyle } from "./global.styles";
 
 import QuestionsList from "./components/questions-list/questions-list.component";
 import QuestionDetails from "./components/question-details/question-details.component";
+import VoteSuccess from "./components/vote-success/vote-success.component";
 
 function App() {
   return (
@@ -12,6 +13,10 @@ function App() {
       <GlobalStyle />
       <Route exact path="/" render={() => <Redirect to="/questions" />} />
       <Switch>
+        <Route
+          path="/questions/:questionId/voteSuccess"
+          component={VoteSuccess}
+        />
         <Route path="/questions/:questionId" component={QuestionDetails} />
         <Route path="/questions" component={QuestionsList} />
       </Switch>
