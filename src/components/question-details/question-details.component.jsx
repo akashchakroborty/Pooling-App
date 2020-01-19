@@ -18,7 +18,13 @@ import {
 
 import { calculatePercent } from "./question-details.utils";
 
-const QuestionDetails = ({ dispatch, match, selectQuestion, isFetching }) => {
+const QuestionDetails = ({
+  dispatch,
+  match,
+  history,
+  selectQuestion,
+  isFetching
+}) => {
   const { question, choices } = selectQuestion;
 
   const [selectedChoice, setSelectedChoice] = useState({
@@ -36,12 +42,19 @@ const QuestionDetails = ({ dispatch, match, selectQuestion, isFetching }) => {
 
   const handleChoiceOnClick = ({ choice, url }) => {
     setSelectedChoice({ ...selectedChoice, title: choice, url });
-    console.log(selectedChoice);
   };
 
   const handleSubmit = event => {
     event.preventDefault();
-    console.log("Save Clicked");
+    dispatch({
+      type: QuestionDetailsActionTypes.PLACE_VOTE_START,
+      payload: {
+        url: selectedChoice.url,
+        callback: () => {
+          history.push(`${match.url}/voteSuccess`);
+        }
+      }
+    });
   };
 
   return (
@@ -81,7 +94,9 @@ const QuestionDetails = ({ dispatch, match, selectQuestion, isFetching }) => {
                     ></progress>
                   </ChoiceList>
                 ))}
-              <SaveButton type="submit">Save vote</SaveButton>
+              <SaveButton type="submit" disabled={!!!selectedChoice.url}>
+                Save vote
+              </SaveButton>
             </ChoiceContainer>
           </Fragment>
         )}

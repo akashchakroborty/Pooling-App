@@ -11,6 +11,13 @@ function poolQuestionDetailsApi(id) {
   });
 }
 
+function placeVoteApi(choice) {
+  return axios.request({
+    method: "post",
+    url: `${ROOT_URL}${choice}`
+  });
+}
+
 export function* fetchQuestionDetailsAsync(action) {
   try {
     let { data } = yield call(poolQuestionDetailsApi, action.payload);
@@ -25,6 +32,21 @@ export function* fetchQuestionDetailsAsync(action) {
     });
   }
 }
+
+export function* placeVoteAsync({ payload }) {
+  try {
+    yield call(placeVoteApi, payload.url);
+    yield call(payload.callback);
+    yield put({
+      type: QuestionDetailsActionTypes.PLACE_VOTE_SUCCESS
+    });
+  } catch (error) {
+    yield put({
+      type: QuestionDetailsActionTypes.PLACE_VOTE_FAILURE
+    });
+  }
+}
+
 export function* fetchQuestionDetailsStart() {
   yield takeLatest(
     QuestionDetailsActionTypes.FETCH_QUESTIONDETAILS_START,
@@ -32,6 +54,10 @@ export function* fetchQuestionDetailsStart() {
   );
 }
 
+export function* placeVoteStart() {
+  yield takeLatest(QuestionDetailsActionTypes.PLACE_VOTE_START, placeVoteAsync);
+}
+
 export function* questionDetailsSagas() {
-  yield all([call(fetchQuestionDetailsStart)]);
+  yield all([call(fetchQuestionDetailsStart), call(placeVoteStart)]);
 }
